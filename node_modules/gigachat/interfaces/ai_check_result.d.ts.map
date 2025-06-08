@@ -1,0 +1,1 @@
+{"version":3,"file":"ai_check_result.d.ts","sourceRoot":"","sources":["../src/interfaces/ai_check_result.ts"],"names":[],"mappings":"AAAA,UAAU,aAAa;IACrB,wEAAwE;IACxE,QAAQ,EAAE,MAAM,CAAC;IAEjB,+CAA+C;IAC/C,UAAU,EAAE,MAAM,CAAC;IAEnB,8CAA8C;IAC9C,MAAM,EAAE,MAAM,CAAC;IAEf;2GACuG;IACvG,YAAY,CAAC,EAAE,MAAM,EAAE,EAAE,CAAC;CAC3B;AAED,YAAY,EAAE,aAAa,EAAE,CAAC"}

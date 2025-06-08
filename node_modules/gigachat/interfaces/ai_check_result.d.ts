@@ -1,0 +1,13 @@
+interface AICheckResult {
+    /** Результат проверки текста. Возможные значения: [ai, human, mixed] */
+    category: string;
+    /** Количество символов в переданном тексте. */
+    characters: number;
+    /** Количество токенов в переданном тексте. */
+    tokens: number;
+    /** Части текста, сгенерированные моделью.
+     *  Обозначаются индексами символов, с которых начинаются и заканчиваются сгенерированные фрагменты. */
+    ai_intervals?: number[][];
+}
+export type { AICheckResult };
+//# sourceMappingURL=ai_check_result.d.ts.map

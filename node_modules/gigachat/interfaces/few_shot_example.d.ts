@@ -1,0 +1,10 @@
+interface FewShotExample {
+    /** Запрос пользователя */
+    request: string;
+    /** Параметры запроса */
+    params: {
+        [key: string]: any;
+    };
+}
+export type { FewShotExample };
+//# sourceMappingURL=few_shot_example.d.ts.map

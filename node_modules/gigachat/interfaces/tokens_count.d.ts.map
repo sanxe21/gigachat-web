@@ -1,0 +1,1 @@
+{"version":3,"file":"tokens_count.d.ts","sourceRoot":"","sources":["../src/interfaces/tokens_count.ts"],"names":[],"mappings":"AAAA,UAAU,MAAM;IACd,MAAM,EAAE,WAAW,EAAE,CAAC;CACvB;AAED,UAAU,WAAW;IACnB,kDAAkD;IAClD,MAAM,EAAE,MAAM,CAAC;IAEf,mDAAmD;IACnD,UAAU,EAAE,MAAM,CAAC;IAEnB,8CAA8C;IAC9C,MAAM,EAAE,MAAM,CAAC;CAChB;AAED,YAAY,EAAE,WAAW,EAAE,MAAM,EAAE,CAAC"}

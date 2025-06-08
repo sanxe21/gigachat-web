@@ -1,0 +1,24 @@
+{
+  "name": "gigachat-web",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"cd backend && npm start\" \"cd frontend-vite && npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "gigachat": "^0.0.14",
+    "winston": "^3.17.0"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "description": ""
+}

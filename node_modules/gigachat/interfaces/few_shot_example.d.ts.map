@@ -1,0 +1,1 @@
+{"version":3,"file":"few_shot_example.d.ts","sourceRoot":"","sources":["../src/interfaces/few_shot_example.ts"],"names":[],"mappings":"AAAA,UAAU,cAAc;IACtB,0BAA0B;IAC1B,OAAO,EAAE,MAAM,CAAC;IAEhB,wBAAwB;IACxB,MAAM,EAAE;QAAE,CAAC,GAAG,EAAE,MAAM,GAAG,GAAG,CAAA;KAAE,CAAC;CAChC;AAED,YAAY,EAAE,cAAc,EAAE,CAAC"}

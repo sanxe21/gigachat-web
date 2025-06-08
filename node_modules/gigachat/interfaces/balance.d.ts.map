@@ -1,0 +1,1 @@
+{"version":3,"file":"balance.d.ts","sourceRoot":"","sources":["../src/interfaces/balance.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,YAAY;IAC3B,0BAA0B;IAC1B,KAAK,EAAE,MAAM,CAAC;IACd,mCAAmC;IACnC,KAAK,EAAE,MAAM,CAAC;CACf;AAED,MAAM,WAAW,OAAO;IACtB,mCAAmC;IACnC,OAAO,EAAE,YAAY,EAAE,CAAC;CACzB"}

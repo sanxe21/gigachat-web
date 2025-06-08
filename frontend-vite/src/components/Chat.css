@@ -1,0 +1,100 @@
+/* Стили для центрирования и улучшения дизайна */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a; /* Тёмный фон для всего экрана */
+}
+
+.chat-container {
+  max-width: 800px; /* Ограничиваем ширину */
+  width: 90%; /* Адаптивность для маленьких экранов */
+  margin: 0 auto; /* Центрирование по горизонтали */
+  padding: 20px;
+  background-color: #2c2f33; /* Тёмный фон контейнера */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 80vh; /* Высота 80% экрана */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat-container h1 {
+  text-align: center;
+  color: #ffffff; /* Белый заголовок */
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.chat-history {
+  flex-grow: 1; /* Занимает доступное пространство */
+  overflow-y: auto; /* Скроллинг при переполнении */
+  padding: 10px;
+  background-color: #23272a; /* Тёмный фон для истории */
+  border-radius: 5px;
+}
+
+.message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px; /* Увеличим шрифт */
+}
+
+.message.user {
+  background-color: #7289da; /* Синий для пользователя */
+  color: #ffffff; /* Белый текст */
+  align-self: flex-end;
+}
+
+.message.assistant {
+  background-color: #43b581; /* Зелёный для GigaChat */
+  color: #ffffff; /* Белый текст */
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #40444b; /* Тёмный фон для ввода */
+  color: #ffffff; /* Белый текст */
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #7289da; /* Синяя кнопка */
+  color: #ffffff; /* Белый текст */
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: #677bc4; /* Изменение цвета при наведении */
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+  .chat-container {
+    width: 95%;
+    height: 90vh;
+    margin: 10px;
+  }
+  .chat-input input, .chat-input button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

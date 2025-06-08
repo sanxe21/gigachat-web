@@ -1,0 +1,1 @@
+{"version":3,"file":"access_token.d.ts","sourceRoot":"","sources":["../src/interfaces/access_token.ts"],"names":[],"mappings":"AAAA,UAAU,WAAW;IACnB,mCAAmC;IACnC,YAAY,EAAE,MAAM,CAAC;IAErB,kEAAkE;IAClE,UAAU,EAAE,MAAM,CAAC;CACpB;AAED,YAAY,EAAE,WAAW,EAAE,CAAC"}
