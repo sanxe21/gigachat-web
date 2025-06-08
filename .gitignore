@@ -1,0 +1,19 @@
+# FRONTEND
+frontend-vite/node_modules/
+frontend-vite/dist/
+frontend-vite/.env*
+frontend-vite/.vite/
+
+# BACKEND
+backend/node_modules/
+backend/.env
+backend/*.log
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Docs (оставляем)
+!docs/
