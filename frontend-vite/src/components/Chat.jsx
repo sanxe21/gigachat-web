@@ -20,12 +20,12 @@ export default function Chat() {
 
     // 3. Через задержку заменяем loading на реальный ответ
     setTimeout(async () => {
-      const res = await fetch("http://localhost:3000/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
-      });
-      const data = await res.json();
+    const res = await fetch("https://gigachat-web.onrender.com/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: input }),
+  });
+    const data = await res.json();
 
       setMessages((prev) =>
         prev.map((m) =>
