@@ -1,100 +1,105 @@
-/* Стили для центрирования и улучшения дизайна */
-body {
+/* Центрирование всей страницы */
+body, html {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  height: 100%;
+  background: #1e1e1e;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1a1a1a; /* Тёмный фон для всего экрана */
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* Контейнер для всего чата */
 .chat-container {
-  max-width: 800px; /* Ограничиваем ширину */
-  width: 90%; /* Адаптивность для маленьких экранов */
-  margin: 0 auto; /* Центрирование по горизонтали */
-  padding: 20px;
-  background-color: #2c2f33; /* Тёмный фон контейнера */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  height: 80vh; /* Высота 80% экрана */
+  width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
-.chat-container h1 {
-  text-align: center;
-  color: #ffffff; /* Белый заголовок */
-  margin-bottom: 20px;
-  font-size: 24px;
+/* Блок с сообщениями */
+.chat-box {
+  background: #2b2b2b;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 500px;
+  max-height: 600px;
+  overflow-y: auto;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.chat-history {
-  flex-grow: 1; /* Занимает доступное пространство */
-  overflow-y: auto; /* Скроллинг при переполнении */
-  padding: 10px;
-  background-color: #23272a; /* Тёмный фон для истории */
-  border-radius: 5px;
-}
-
+/* Сообщения */
 .message {
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 16px; /* Увеличим шрифт */
+  padding: 12px 16px;
+  border-radius: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.25s ease forwards;
 }
 
 .message.user {
-  background-color: #7289da; /* Синий для пользователя */
-  color: #ffffff; /* Белый текст */
+  background: #3b5bbe;
   align-self: flex-end;
+  color: #fff;
 }
 
-.message.assistant {
-  background-color: #43b581; /* Зелёный для GigaChat */
-  color: #ffffff; /* Белый текст */
+.message.gigachat {
+  background: #3cae91;
+  align-self: flex-start;
+  color: #fff;
 }
 
-.chat-input {
+/* Поле ввода */
+.chat-form {
   display: flex;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 8px;
+  margin-top: 16px;
+  width: 100%;
 }
 
-.chat-input input {
+.chat-form input {
   flex-grow: 1;
-  padding: 10px;
-  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
   border: none;
-  border-radius: 5px;
-  background-color: #40444b; /* Тёмный фон для ввода */
-  color: #ffffff; /* Белый текст */
+  font-size: 16px;
+  background: #1e1e1e;
+  color: #fff;
+  outline: none;
 }
 
-.chat-input button {
-  padding: 10px 20px;
-  font-size: 16px;
+.chat-form input::placeholder {
+  color: #888;
+}
+
+.chat-form button {
+  padding: 12px 18px;
+  background: #3b5bbe;
   border: none;
-  border-radius: 5px;
-  background-color: #7289da; /* Синяя кнопка */
-  color: #ffffff; /* Белый текст */
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-.chat-input button:hover {
-  background-color: #677bc4; /* Изменение цвета при наведении */
+.chat-form button:hover {
+  background: #2a4a99;
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 600px) {
-  .chat-container {
-    width: 95%;
-    height: 90vh;
-    margin: 10px;
-  }
-  .chat-input input, .chat-input button {
-    font-size: 14px;
-    padding: 8px;
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -1,102 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './Chat.css';
+import React, { useState } from "react";
+import "./Chat.css";
 
-function Chat() {
-  const [message, setMessage] = useState('');
-  const [history, setHistory] = useState([]);
-  const [typingMessage, setTypingMessage] = useState(null);
-  const [typingIndex, setTypingIndex] = useState(0);
+export default function Chat() {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
 
-  const fetchHistory = async () => {
-    try {
-      const res = await axios.get('http://localhost:3000/api/history');
-      setHistory(res.data.history || []);
-    } catch (error) {
-      console.error('Ошибка получения истории:', error);
-    }
+  const handleSend = (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    // 1. Добавляем сообщение пользователя мгновенно
+    const userMsg = { id: Date.now(), role: "user", text: input };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+
+    // 2. Подготавливаем "loading" сообщение бота
+    const loadingMsg = { id: Date.now() + 1, role: "gigachat", text: "…" };
+    setMessages((prev) => [...prev, loadingMsg]);
+
+    // 3. Через задержку заменяем loading на реальный ответ
+    setTimeout(async () => {
+      const res = await fetch("http://localhost:3000/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input }),
+      });
+      const data = await res.json();
+
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === loadingMsg.id ? { ...m, text: data.reply } : m
+        )
+      );
+    }, 1500);
   };
-
-  useEffect(() => {
-    fetchHistory();
-  }, []);
-
-  const sendMessage = async () => {
-    if (!message.trim()) return;
-    console.log('Отправка сообщения:', message);
-
-    // Отправляем запрос без немедленного добавления в историю
-    try {
-      const res = await axios.post('http://localhost:3000/api/chat', { message });
-      console.log('Ответ от сервера:', res.data);
-
-      // Обновляем историю сразу после ответа
-      setHistory(res.data.history);
-
-      // Начинаем анимацию набора текста для последнего ответа
-      const assistantMessage = res.data.history.findLast(msg => msg.role === 'assistant');
-      if (assistantMessage) {
-        setTypingMessage(assistantMessage);
-        setTypingIndex(0);
-        const fullText = assistantMessage.content;
-        const interval = setInterval(() => {
-          setTypingIndex((prev) => {
-            if (prev >= fullText.length) {
-              clearInterval(interval);
-              return prev;
-            }
-            return prev + 1;
-          });
-        }, 50);
-      }
-    } catch (error) {
-      console.error('Ошибка отправки сообщения:', error.response ? error.response.data : error.message);
-    }
-  };
-
-  const resetChat = async () => {
-    try {
-      await axios.post('http://localhost:3000/api/chat', { message: '', reset: true });
-      setHistory([]);
-      setTypingMessage(null);
-      setTypingIndex(0);
-    } catch (error) {
-      console.error('Ошибка сброса чата:', error);
-    }
-  };
-
-  const displayHistory = [...history];
-  if (typingMessage) {
-    displayHistory[displayHistory.length - 1] = {
-      ...typingMessage,
-      content: typingMessage.content.substring(0, typingIndex),
-    };
-  }
 
   return (
-    <div className="chat-wrapper">
+    <div className="chat-container">
       <h1>GigaChat Web</h1>
-      <div className="chat-history">
-        {displayHistory.map((msg, index) => (
-          <div key={index} className={`message ${msg.role}`}>
-            <strong>{msg.role === 'user' ? 'Вы: ' : 'GigaChat: '}</strong>
-            {msg.content}
+      <div className="chat-box">
+        {messages.map((msg) => (
+          <div
+            key={msg.id}
+            className={`message ${msg.role === "user" ? "user" : "gigachat"}`}
+          >
+            <strong>{msg.role === "user" ? "Вы" : "GigaChat"}:</strong>{" "}
+            {msg.text}
           </div>
         ))}
       </div>
-      <div className="chat-input">
+      <form onSubmit={handleSend} className="chat-form">
         <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Введите сообщение"
-          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Введите сообщение..."
+          autoFocus
         />
-        <button onClick={sendMessage}>Отправить</button>
-        <button onClick={resetChat}>Очистить чат</button>
-      </div>
+        <button type="submit">Отправить</button>
+      </form>
     </div>
   );
 }
-
-export default Chat;
