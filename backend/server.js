@@ -13,7 +13,14 @@ app.use(cors({
 
 app.use('/api', chatRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+});
+
+app.post('/api/chat', (req, res) => {
+  const { message } = req.body;
+  // Логика обработки сообщения
+  res.json({ history: [{ role: 'assistant', content: `Ответ на: ${message}` }] });
 });
