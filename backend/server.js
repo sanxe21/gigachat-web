@@ -6,7 +6,7 @@ const app = express();
 
 // ✅ Разрешаем CORS только для фронта на Vercel
 app.use(cors({
-  origin: 'https://gigachat-web.vercel.app',  // ⚠️ Укажи ТОЛЬКО свой фронт
+  origin: 'https://gigachat-cbwgzhra5-sanxe21s-projects.vercel.app',  // ⚠️ Укажи ТОЛЬКО свой фронт
   methods: ['GET', 'POST'],
   credentials: true,
 }));
